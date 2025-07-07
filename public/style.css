@@ -1,0 +1,163 @@
+body {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+#goal-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 280px;
+  background: #080c10;
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
+  z-index: 10000;
+}
+
+.goal-container {
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.goal-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
+}
+
+.goal-amounts {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.current-ar {
+  font-size: 24px;
+  font-weight: 800;
+  color: #00ff7f;
+  text-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+.goal-ar {
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.usd-value {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-left: auto;
+}
+
+.progress-container {
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ca004b, #ff2d6d);
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1), background 0.5s ease;
+}
+
+.progress-container.reached-goal .progress-text {
+  color: #000 !important;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.progress-container.high-progress .progress-text {
+  color: #111;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.particle {
+  position: absolute;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  animation: particle-fall linear;
+}
+
+@keyframes particle-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  opacity: 0;
+}
+
+@keyframes celebration {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 127, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 255, 127, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 127, 0);
+  }
+}
+
+.celebrating {
+  animation: celebration 1.5s ease-out;
+}
